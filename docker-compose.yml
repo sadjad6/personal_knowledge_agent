@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - qdrant
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: >
+      sh -c "uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  qdrant:
+    image: qdrant/qdrant:v1.7.4
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  streamlit:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - app
+    command: >
+      sh -c "streamlit run frontend/app.py --server.port=8501 --server.address=0.0.0.0"
+
+volumes:
+  qdrant_data:
