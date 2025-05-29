@@ -90,7 +90,7 @@ QDRANT_COLLECTION=personal_knowledge
 
 # LLM
 OLLAMA_BASE_URL=http://host.docker.internal:11434
-MODEL_NAME=gemma:3b
+MODEL_NAME=gemma3:4b
 
 # Paths
 DATA_DIR=./data
@@ -182,7 +182,7 @@ The application includes a scheduler that runs the following tasks:
 
 2. **Pull the Gemma 3B model**
    ```bash
-   ollama pull gemma:3b
+   ollama pull gemma3:4b
    ```
 
 3. **Build and start the application**
