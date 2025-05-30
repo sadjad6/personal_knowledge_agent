@@ -1,6 +1,6 @@
 # Personal Knowledge Management AI Assistant
 
-A powerful, self-hosted AI assistant for managing and querying your personal knowledge base using natural language. Built with FastAPI, LangChain, Qdrant, and Streamlit, with a local Gemma 3B model for privacy and offline use.
+A powerful, self-hosted AI assistant for managing and querying your personal knowledge base using natural language. Built with FastAPI, LangChain, Qdrant, and Streamlit, with a local Gemma3:4B model for privacy and offline use.
 
 ## ✨ Features
 
